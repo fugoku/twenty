@@ -2,7 +2,7 @@ import { fireEvent, render } from '@testing-library/react';
 
 import { EditableTextStory } from '../__stories__/EditableText.stories';
 
-it('Checks the EditableCell editing event bubbles up', async () => {
+it('Checks the EditableText editing event bubbles up', async () => {
   const func = jest.fn(() => null);
   const { getByTestId } = render(
     <EditableTextStory content="test" changeHandler={func} />,
