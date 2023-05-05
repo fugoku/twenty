@@ -29,7 +29,7 @@ const StyledNoEditText = styled.div`
   max-width: 200px;
 `;
 
-function EditableCell({
+function EditableText({
   content,
   placeholder,
   changeHandler,
@@ -67,4 +67,4 @@ function EditableCell({
   );
 }
 
-export default EditableCell;
+export default EditableText;
