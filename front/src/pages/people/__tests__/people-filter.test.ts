@@ -6,8 +6,8 @@ import {
   SEARCH_COMPANY_QUERY,
   SEARCH_PEOPLE_QUERY,
 } from '../../../services/search/search';
-import { mockCompanyData } from '../../companies/__stories__/mock-data';
-import { defaultData } from '../default-data';
+import { mockData as mockCompanyData } from '../../companies/__tests__/__data__/mock-data';
+import { mockData as mockPeopleData } from './__data__/mock-data';
 import { availableFilters } from '../people-table';
 
 function assertFilterUseCompanySearch<FilterValue>(
@@ -32,7 +32,7 @@ function assertFilterUsePeopleSearch<FilterValue>(
   return filter.searchQuery === SEARCH_PEOPLE_QUERY;
 }
 
-const JohnDoeUser = defaultData.find(
+const JohnDoeUser = mockPeopleData.find(
   (user) => user.email === 'john@linkedin.com',
 ) as GraphqlQueryPerson;
 
