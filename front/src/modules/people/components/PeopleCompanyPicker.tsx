@@ -1,11 +1,9 @@
-import { useRecoilState } from 'recoil';
-
 import { SingleEntitySelect } from '@/relation-picker/components/SingleEntitySelect';
 import { useFilteredSearchEntityQuery } from '@/relation-picker/hooks/useFilteredSearchEntityQuery';
 import { relationPickerSearchFilterScopedState } from '@/relation-picker/states/relationPickerSearchFilterScopedState';
+import { useCloseEditableCell } from '@/ui/components/editable-cell/hooks/useCloseEditableCell';
 import { isCreateModeScopedState } from '@/ui/components/editable-cell/states/isCreateModeScopedState';
 import { useRecoilScopedState } from '@/ui/hooks/useRecoilScopedState';
-import { isSomeInputInEditModeState } from '@/ui/tables/states/isSomeInputInEditModeState';
 import { getLogoUrlFromDomainName } from '@/utils/utils';
 import {
   CommentableType,
@@ -26,9 +24,8 @@ export function PeopleCompanyPicker({ people }: OwnProps) {
     relationPickerSearchFilterScopedState,
   );
   const [updatePeople] = useUpdatePeopleMutation();
-  const [, setIsSomeInputInEditMode] = useRecoilState(
-    isSomeInputInEditModeState,
-  );
+
+  const closeEditableCell = useCloseEditableCell();
 
   const companies = useFilteredSearchEntityQuery({
     queryHook: useSearchCompanyQuery,
@@ -46,14 +43,14 @@ export function PeopleCompanyPicker({ people }: OwnProps) {
   });
 
   async function handleEntitySelected(entity: any) {
-    setIsSomeInputInEditMode(false);
-
     await updatePeople({
       variables: {
         ...people,
         companyId: entity.id,
       },
     });
+
+    closeEditableCell();
   }
 
   function handleCreate() {
