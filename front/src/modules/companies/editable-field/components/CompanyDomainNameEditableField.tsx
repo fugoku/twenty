@@ -56,6 +56,7 @@ export function CompanyDomainNameEditableField({ company }: OwnProps) {
         }
         displayModeContent={<FieldDisplayURL URL={internalValue} />}
         useEditButton
+        isDisplayModeContentEmpty={!(internalValue !== '')}
       />
     </RecoilScope>
   );
