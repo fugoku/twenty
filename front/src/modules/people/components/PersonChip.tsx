@@ -1,25 +1,26 @@
-import { EntityChip } from '@/ui/chip/components/EntityChip';
+import { EntityChip, EntityChipVariant } from '@/ui/chip/components/EntityChip';
 
 export type PersonChipPropsType = {
   id: string;
   name: string;
   pictureUrl?: string;
-  clickable?: boolean;
+  variant?: EntityChipVariant;
 };
 
 export function PersonChip({
   id,
   name,
   pictureUrl,
-  clickable = true,
+  variant,
 }: PersonChipPropsType) {
   return (
     <EntityChip
       entityId={id}
-      linkToEntity={clickable ? `/person/${id}` : undefined}
+      linkToEntity={`/person/${id}`}
       name={name}
       avatarType="rounded"
       pictureUrl={pictureUrl}
+      variant={variant}
     />
   );
 }
