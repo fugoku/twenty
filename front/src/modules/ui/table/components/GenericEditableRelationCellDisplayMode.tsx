@@ -4,28 +4,31 @@ import { CompanyChip } from '@/companies/components/CompanyChip';
 import { Entity } from '@/ui/relation-picker/types/EntityTypeForSelect';
 import { useCurrentRowEntityId } from '@/ui/table/hooks/useCurrentEntityId';
 import { tableEntityFieldFamilySelector } from '@/ui/table/states/tableEntityFieldFamilySelector';
-import { EntityFieldMetadata } from '@/ui/table/types/EntityFieldMetadata';
+import {
+  ViewFieldDefinition,
+  ViewFieldRelationMetadata,
+} from '@/ui/table/types/ViewField';
 import { getLogoUrlFromDomainName } from '~/utils';
 
 type OwnProps = {
-  fieldMetadata: EntityFieldMetadata;
+  fieldDefinition: ViewFieldDefinition<ViewFieldRelationMetadata>;
   editModeHorizontalAlign?: 'left' | 'right';
   placeholder?: string;
 };
 
 export function GenericEditableRelationCellDisplayMode({
-  fieldMetadata,
+  fieldDefinition,
 }: OwnProps) {
   const currentRowEntityId = useCurrentRowEntityId();
 
   const fieldValue = useRecoilValue<any | null>(
     tableEntityFieldFamilySelector({
       entityId: currentRowEntityId ?? '',
-      fieldName: fieldMetadata.fieldName,
+      fieldName: fieldDefinition.metadata.fieldName,
     }),
   );
 
-  switch (fieldMetadata.relationType) {
+  switch (fieldDefinition.metadata.relationType) {
     case Entity.Company: {
       return (
         <CompanyChip
@@ -37,7 +40,7 @@ export function GenericEditableRelationCellDisplayMode({
     }
     default:
       console.warn(
-        `Unknown relation type: "${fieldMetadata.relationType}" in GenericEditableRelationCellEditMode`,
+        `Unknown relation type: "${fieldDefinition.metadata.relationType}" in GenericEditableRelationCellEditMode`,
       );
       return <> </>;
   }

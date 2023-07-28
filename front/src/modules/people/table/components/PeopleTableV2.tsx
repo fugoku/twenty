@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState } from 'react';
 
 import { defaultOrderBy } from '@/companies/queries';
 import { GenericEntityTableData } from '@/people/components/GenericEntityTableData';
-import { peopleFieldMetadataArray } from '@/people/constants/peopleFieldMetadataArray';
+import { peopleViewFields } from '@/people/constants/peopleFieldMetadataArray';
 import { PeopleSelectedSortType } from '@/people/queries';
 import { reduceSortsToOrderBy } from '@/ui/filter-n-sort/helpers';
 import { filtersScopedState } from '@/ui/filter-n-sort/states/filtersScopedState';
@@ -16,6 +16,7 @@ import {
   useGetPeopleQuery,
   useUpdateOnePersonMutation,
 } from '~/generated/graphql';
+import { peopleFilters } from '~/pages/people/people-filters';
 import { availableSorts } from '~/pages/people/people-sorts';
 
 export function PeopleTable() {
@@ -39,7 +40,8 @@ export function PeopleTable() {
         useGetRequest={useGetPeopleQuery}
         orderBy={orderBy}
         whereFilters={whereFilters}
-        fieldMetadataArray={peopleFieldMetadataArray}
+        viewFields={peopleViewFields}
+        filterDefinitionArray={peopleFilters}
       />
       <EntityTable
         viewName="All People"
