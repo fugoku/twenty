@@ -38,6 +38,7 @@ export function CompanyAccountOwnerEditableField({ company }: OwnProps) {
             )
           }
           isDisplayModeContentEmpty={!company.accountOwner}
+          isDisplayModeFixHeight={true}
         />
       </RecoilScope>
     </RecoilScope>
