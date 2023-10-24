@@ -19,7 +19,7 @@ export const SettingsObjectDisabledMenuDropDown = ({
   onActivate,
   onErase,
 }: SettingsObjectDisabledMenuDropDownProps) => {
-  const dropdownScopeId = scopeKey + '-settings-object-disabled-menu-dropdown';
+  const dropdownScopeId = `${scopeKey}-settings-object-disabled-menu-dropdown`;
 
   const { closeDropdown } = useDropdown({ dropdownScopeId });
 
