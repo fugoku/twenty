@@ -14,6 +14,18 @@ export const addFavoriteRelations: TenantMigrationTableAction[] = [
         referencedTableColumnName: 'id',
         action: TenantMigrationColumnActionType.RELATION,
       },
+      {
+        columnName: 'personId',
+        referencedTableName: 'person',
+        referencedTableColumnName: 'id',
+        action: TenantMigrationColumnActionType.RELATION,
+      },
+      {
+        columnName: 'workspaceMemberId',
+        referencedTableName: 'workspaceMember',
+        referencedTableColumnName: 'id',
+        action: TenantMigrationColumnActionType.RELATION,
+      },
     ],
   },
 ];

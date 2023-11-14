@@ -14,6 +14,18 @@ export const addActivityTargetRelations: TenantMigrationTableAction[] = [
         referencedTableColumnName: 'id',
         action: TenantMigrationColumnActionType.RELATION,
       },
+      {
+        columnName: 'personId',
+        referencedTableName: 'person',
+        referencedTableColumnName: 'id',
+        action: TenantMigrationColumnActionType.RELATION,
+      },
+      {
+        columnName: 'activityId',
+        referencedTableName: 'activity',
+        referencedTableColumnName: 'id',
+        action: TenantMigrationColumnActionType.RELATION,
+      },
     ],
   },
 ];
