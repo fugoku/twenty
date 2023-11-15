@@ -10,7 +10,7 @@ import {
 import { logError } from '~/utils/logError';
 
 import { FIND_MANY_METADATA_OBJECTS } from '../graphql/queries';
-import { formatPagedObjectMetadataItemsToObjectMetadataItems } from '../utils/formatPagedObjectMetadataItemsToObjectMetadataItems';
+import { mapPaginatedObjectMetadataItemsToObjectMetadataItems } from '../utils/mapPaginatedObjectMetadataItemsToObjectMetadataItems';
 
 import { useApolloMetadataClient } from './useApolloMetadataClient';
 
@@ -59,7 +59,7 @@ export const useFindManyObjectMetadataItems = ({
     });
 
   const objectMetadataItems = useMemo(() => {
-    return formatPagedObjectMetadataItemsToObjectMetadataItems({
+    return mapPaginatedObjectMetadataItemsToObjectMetadataItems({
       pagedObjectMetadataItems: data,
     });
   }, [data]);
