@@ -9,8 +9,8 @@
   ],
   "scripts": {
     "test": "jest",
-    "build": "rimraf ./dist && tsc  --outDir ./dist",
-    "build-pack": "yarn build && yarn pack -o eslint-plugin-twenty.tgz",
+    "build": "node init && rimraf ./dist && tsc  --outDir ./dist",
+    "build-pack": "node init && yarn build && yarn pack -o eslint-plugin-twenty.tgz",
     "lint": "eslint src --max-warnings=0"
   },
   "keywords": [],
